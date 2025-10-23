@@ -9,7 +9,6 @@ const categories = [
   "Acrylic Nails",
   "Nail Art / Decorative",
   "French / Classic Style",
-  "Custom",
 ];
 
 const tagColors = {
@@ -110,7 +109,6 @@ const Katalog = () => {
       {/* Grid produk / Tampilan kosong */}
       {filteredProducts.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 space-y-6">
-          {/* Ilustrasi */}
           <svg
             className="w-32 h-32 text-pink-200"
             fill="none"
@@ -125,19 +123,13 @@ const Katalog = () => {
               d="M3 7v4a1 1 0 001 1h3m10-5v4a1 1 0 01-1 1h-3m-6 4h6m-3-3v3m0-3V7"
             />
           </svg>
-
-          {/* Teks utama */}
           <h2 className="text-2xl font-bold text-gray-700">
             Ups! Belum ada produk di kategori ini
           </h2>
-
-          {/* Teks tambahan */}
           <p className="max-w-xs text-center text-gray-500">
             Kami sedang menyiapkan koleksi nail art terbaru untukmu. Sementara itu,
             coba lihat kategori lain atau kembali lagi nanti!
           </p>
-
-          {/* Tombol kembali ke semua produk */}
           <button
             onClick={() => setSelectedCategory("All")}
             className="px-6 py-2 text-white transition-all bg-pink-600 rounded-full hover:bg-pink-700"
@@ -156,7 +148,6 @@ const Katalog = () => {
               }}
               className="relative overflow-hidden transition-transform bg-white shadow-lg cursor-pointer rounded-xl hover:scale-105"
             >
-              {/* Tag */}
               {product.tags?.length > 0 && (
                 <div className="absolute flex flex-wrap gap-1 p-2">
                   {product.tags.map((tag, idx) => {
@@ -174,14 +165,12 @@ const Katalog = () => {
                 </div>
               )}
 
-              {/* Gambar */}
               <img
                 src={`${API_URL}${product.images[0]}`}
                 alt={product.name}
                 className="object-cover w-full h-56"
               />
 
-              {/* Info Produk */}
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-800">
                   {product.name}
@@ -213,7 +202,6 @@ const Katalog = () => {
         </div>
       )}
 
-      {/* Modal produk */}
       {selectedProduct && (
         <div
           onClick={() => setSelectedProduct(null)}
@@ -223,7 +211,6 @@ const Katalog = () => {
             onClick={(e) => e.stopPropagation()}
             className="relative flex flex-col w-full max-w-md bg-white shadow-lg rounded-xl"
           >
-            {/* Tombol close */}
             <button
               onClick={() => setSelectedProduct(null)}
               className="absolute z-10 text-3xl font-bold text-gray-500 top-2 right-4 hover:text-gray-700"
@@ -231,7 +218,6 @@ const Katalog = () => {
               ×
             </button>
 
-            {/* Gambar utama */}
             <div className="relative flex-shrink-0 w-full h-64 bg-gray-100 rounded-t-xl">
               {selectedProduct.images.length > 0 ? (
                 <img
@@ -245,7 +231,6 @@ const Katalog = () => {
                 </div>
               )}
 
-              {/* Navigasi gambar */}
               {selectedProduct.images.length > 1 && (
                 <>
                   <button
@@ -264,7 +249,6 @@ const Katalog = () => {
               )}
             </div>
 
-            {/* Thumbnail */}
             {selectedProduct.images.length > 1 && (
               <div className="flex flex-wrap justify-center gap-2 p-3 bg-gray-100">
                 {selectedProduct.images.map((img, index) => (
@@ -283,7 +267,6 @@ const Katalog = () => {
               </div>
             )}
 
-            {/* Info produk */}
             <div className="flex-1 p-5">
               <h2 className="text-xl font-semibold text-gray-800">
                 {selectedProduct.name}
@@ -303,13 +286,11 @@ const Katalog = () => {
                 </span>
               </div>
 
-              {/* Scroll hanya di deskripsi */}
               <div className="pr-2 mt-3 overflow-y-auto leading-relaxed text-gray-700 break-words whitespace-normal max-h-40">
                 {selectedProduct.description}
               </div>
             </div>
 
-            {/* Tombol booking tetap di bawah */}
             <div className="p-4 border-t border-gray-200">
               <button
                 onClick={(e) => handleBooking(e, selectedProduct._id)}
